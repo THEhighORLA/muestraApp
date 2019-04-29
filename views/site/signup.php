@@ -29,8 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'passw')->passwordInput() ?>
 
-                
-                <?= $form->field($model,'id_rol')->dropdownlist(ArrayHelper::map($vista_user->find()->asArray()->all(),'id_rol','nombre')) ?>
+
+                <?= $form->field($model,'id_rol')->dropdownlist(ArrayHelper::map($rol->find()->asArray()->all(),'id','nombre')) ?>
 
 
                 <div class="form-group">

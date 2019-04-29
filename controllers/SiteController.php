@@ -17,6 +17,7 @@ use app\models\ContactForm;
 use app\models\VistaUsuarios;
 use app\models\Asignaraccion;
 use yii\web\ForbiddenHttpException;
+use app\models\Rol;
 /**
  * Site controller
  */
@@ -159,7 +160,7 @@ class SiteController extends Controller
        
         if($accionesUser){
                 $model = new SignupForm();
-            $vista_user = new VistaUsuarios();
+            $rol = new Rol(); //Modelo que contiene los roles de usuarios
             if ($model->load(Yii::$app->request->post()) && $model->signup()) {
                 Yii::$app->session->setFlash('Usario añadido exitosamente', '' );
                 return $this->goHome();
@@ -167,7 +168,7 @@ class SiteController extends Controller
 
             return $this->render('signup', [
                 'model' => $model,
-                'vista_user' =>$vista_user,
+                'rol' =>$rol,
             ]);
         }else{
             throw new ForbiddenHttpException('Su usuario no posee los privilegios para accceder a este medio');
